@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sakshi weds Pawan · 26 Nov 2026</title>
+<title>Sakshi Weds Pawan · 26 Nov 2026</title>
 <meta name="description" content="Wedding invitation of Sakshi & Pawan (Nishu) — Thursday, 26th November 2026, Aravali Resort, Alwar.">
 <meta name="theme-color" content="#264938">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -375,13 +375,52 @@ footer p{color:var(--muted);font-size:13px}
     </div>
   </section>
 </main>
-
 <footer>
+
   <div class="garland" style="margin:0 0 20px;height:90px;transform:scaleY(-1)"><svg id="garland2" preserveAspectRatio="xMidYMax slice"></svg></div>
   <div class="names">Sakshi &amp; Pawan</div>
   <p class="script" style="font-size:22px;color:var(--ink2)">Thursday, 26th November 2026</p>
   <p>Aravali Resort · Kati Ghati, Jaipur Road, Alwar</p>
+
+  <!-- Website Credit -->
+  <div style="
+    margin-top:35px;
+    padding-top:18px;
+    border-top:1px solid var(--line2);
+  ">
+    <p style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)">
+      Website Designed &amp; Developed By
+    </p>
+
+    <a href="https://yessoftech.com/"
+       target="_blank"
+       rel="noopener noreferrer"
+       style="
+         display:inline-block;
+         margin-top:7px;
+         font-family:'Cormorant Garamond',serif;
+         font-size:27px;
+         font-weight:600;
+         color:var(--ink);
+         text-decoration:none;
+         letter-spacing:1px;
+       ">
+      YES SOFTECH
+    </a>
+
+    <p style="font-size:11px;margin-top:3px;letter-spacing:1px">
+      Social Media Communications &amp; Digital Solutions
+    </p>
+    <p style="font-size:11px;margin-top:3px;letter-spacing:1px">
+      contact us on 8740000977 or 8740000978 or email us at <a href="mailto:info@yessoftech.com">info@yessoftech.com</a>
+    </p>
+
+    <p style="font-size:11px;margin-top:8px;color:var(--gold)">
+      © 2026 YES Softech. All Rights Reserved.
+    </p>
+  </div>
 </footer>
+
 
 <!-- RSVP modal -->
 <div class="modal" id="modal">
@@ -544,18 +583,8 @@ gate.addEventListener('click',e=>{if(e.target.closest('.panel')||e.target.closes
 
 /* ================= MUSIC ================= */
 const audio=document.getElementById('song'),mb=document.getElementById('music');
-// Start the wedding song from 00:22 instead of the beginning.
-if(audio.readyState >= 1){audio.currentTime=22;}else{audio.addEventListener('loadedmetadata',()=>{audio.currentTime=22;},{once:true});}
 function setState(p){mb.classList.toggle('playing',p);mb.classList.toggle('muted',!p)}
-function startMusic(){
-  audio.volume=0;
-  const playFromTen=()=>{
-    audio.currentTime=10;
-    audio.play().then(()=>{setState(true);let v=0;const t=setInterval(()=>{v=Math.min(.75,v+.05);audio.volume=v;if(v>=.75)clearInterval(t)},120)}).catch(()=>setState(false));
-  };
-  if(audio.readyState>=1)playFromTen();
-  else audio.addEventListener('loadedmetadata',playFromTen,{once:true});
-}
+function startMusic(){audio.volume=0;audio.play().then(()=>{setState(true);let v=0;const t=setInterval(()=>{v=Math.min(.75,v+.05);audio.volume=v;if(v>=.75)clearInterval(t)},120)}).catch(()=>setState(false))}
 mb.addEventListener('click',()=>{if(audio.paused){audio.volume=.75;audio.play().then(()=>setState(true)).catch(()=>setState(false))}else{audio.pause();setState(false)}});
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&!audio.paused){audio.pause();setState(false)}});
 
