@@ -628,9 +628,9 @@ gate.addEventListener('click',e=>{if(e.target.closest('.panel')||e.target.closes
 /* ================= MUSIC ================= */
 const audio=document.getElementById('song'),mb=document.getElementById('music');
 function setState(p){mb.classList.toggle('playing',p);mb.classList.toggle('muted',!p)}
-<<<<<<< HEAD
+
 function startMusic(){audio.volume=0;audio.play().then(()=>{setState(true);let v=0;const t=setInterval(()=>{v=Math.min(.75,v+.05);audio.volume=v;if(v>=.75)clearInterval(t)},120)}).catch(()=>setState(false))}
-=======
+
 function startMusic(){
   audio.volume=0;
   const playFromTwentyTwo=()=>{
@@ -640,7 +640,7 @@ function startMusic(){
   if(audio.readyState>=1)playFromTwentyTwo();
   else audio.addEventListener('loadedmetadata',playFromTwentyTwo,{once:true});
 }
->>>>>>> 26627a953b00663894a03629b0fb4a941a634980
+
 mb.addEventListener('click',()=>{if(audio.paused){audio.volume=.75;audio.play().then(()=>setState(true)).catch(()=>setState(false))}else{audio.pause();setState(false)}});
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&!audio.paused){audio.pause();setState(false)}});
 /* ================= REVEAL ================= */
