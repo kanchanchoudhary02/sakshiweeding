@@ -679,7 +679,23 @@ function renderW(){wl=[...loadW(),...seed];document.getElementById('dots').inner
 document.getElementById('dots').addEventListener('click',e=>{if(e.target.dataset.k){wi=+e.target.dataset.k;showWish(wi)}});
 setInterval(()=>{if(wl.length>1){wi=(wi+1)%wl.length;showWish(wi)}},6000);
 renderW();
-document.getElementById('wishForm').addEventListener('submit',e=>{e.preventDefault();const a=loadW();a.unshift({n:wName.value.trim(),r:wRel.value.trim(),m:wMsg.value.trim()});saveW(a);renderW();e.target.reset();petals(16);toast('Thank you for your wish 💐')});
+document.getElementById('wishForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const name=wName.value.trim(), relation=wRel.value.trim(), wish=wMsg.value.trim();
+  const a=loadW();
+  a.unshift({n:name,r:relation,m:wish});
+  saveW(a);
+  renderW();
+  const msg=`💐 Wedding Wish – Sakshi & Pawan\nName: ${name}\nRelation: ${relation || 'Not specified'}\nWish: ${wish}`;
+  const wa=document.createElement('a');
+  wa.href='https://wa.me/919414318086?text='+encodeURIComponent(msg);
+  wa.target='_blank';
+  wa.rel='noopener';
+  document.body.appendChild(wa);wa.click();wa.remove();
+  e.target.reset();
+  petals(16);
+  toast('Opening WhatsApp… thank you for your wish 💐');
+});
 </script>
 </body>
 </html>
